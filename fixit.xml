@@ -45,36 +45,76 @@
       </block>
     </statement>
     <statement name="INITIALIZATION">
-      <block type="variables_set" id="ShCX|F)M7)6uV)j:5^/2">
+      <block type="variables_set" id="init_stake">
         <field name="VAR" id="1^@2A}e:N.=x]kkbANpA">stake</field>
         <value name="VALUE">
-          <block type="math_number" id="h}pIQBGi}Qg_sg1g!n`M">
+          <block type="math_number" id="val_stake">
             <field name="NUM">1</field>
           </block>
         </value>
         <next>
-          <block type="variables_set" id="ynCTQYGJ8(Io[N(|Y1Zq">
+          <block type="variables_set" id="init_mult">
             <field name="VAR" id="#KDll+`HsjqR@}KgdnM[">multiplier</field>
             <value name="VALUE">
-              <block type="math_number" id="jrcZn7Brzt7M`bThMo/M">
+              <block type="math_number" id="val_mult">
                 <field name="NUM">2.1</field>
               </block>
             </value>
+            <next>
+              <block type="variables_set" id="init_rsi">
+                <field name="VAR" id="aUry~6VDtwYz]c!k}x:n">rsi</field>
+                <value name="VALUE">
+                  <block type="lists_create_with" id="empty_rsi">
+                    <mutation items="0"></mutation>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="init_ema10">
+                    <field name="VAR" id="rbdLLAbL9inEE38FyEtr">ema_10</field>
+                    <value name="VALUE">
+                      <block type="lists_create_with" id="empty_ema10">
+                        <mutation items="0"></mutation>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="init_ema50">
+                        <field name="VAR" id="xA(E1HjLb:#=L,.8~o)2">ema_50</field>
+                        <value name="VALUE">
+                          <block type="lists_create_with" id="empty_ema50">
+                            <mutation items="0"></mutation>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="init_macd">
+                            <field name="VAR" id="hK(XSqy+XV=Xw|9f1~O*">macd_value</field>
+                            <value name="VALUE">
+                              <block type="lists_create_with" id="empty_macd">
+                                <mutation items="0"></mutation>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
           </block>
         </next>
       </block>
     </statement>
     <statement name="SUBMARKET">
-      <block type="trade_definition_tradeoptions" id="f|}vJmP5%,Xy${Jc}wAD">
+      <block type="trade_definition_tradeoptions" id="trade_opt">
         <mutation xmlns="http://www.w3.org/1999/xhtml" has_first_barrier="false" has_second_barrier="false" has_prediction="false"></mutation>
         <field name="DURATIONTYPE_LIST">t</field>
         <value name="DURATION">
-          <shadow type="math_number_positive" id="x^*,5N(pP.VQsfIS2;RS">
+          <shadow type="math_number_positive" id="dur">
             <field name="NUM">5</field>
           </shadow>
         </value>
         <value name="AMOUNT">
-          <block type="variables_get" id="sz7Wu1_+vCGrh;:qj}Xg">
+          <block type="variables_get" id="get_stake_amt">
             <field name="VAR" id="1^@2A}e:N.=x]kkbANpA">stake</field>
           </block>
         </value>
@@ -102,100 +142,76 @@
           </block>
         </value>
         <statement name="DO0">
-          <block type="rsi_statement" id="rsi_calc">
-            <field name="VARIABLE" id="aUry~6VDtwYz]c!k}x:n">rsi</field>
-            <statement name="STATEMENT">
-              <block type="input_list" id="rsi_input" deletable="false" movable="false">
+          <block type="variables_set" id="calc_rsi">
+            <field name="VAR" id="aUry~6VDtwYz]c!k}x:n">rsi</field>
+            <value name="VALUE">
+              <block type="rsia" id="rsia_block">
                 <value name="INPUT_LIST">
                   <block type="ticks" id="rsi_ticks"></block>
                 </value>
-                <next>
-                  <block type="period" id="rsi_period" deletable="false" movable="false">
-                    <value name="PERIOD">
-                      <shadow type="math_number" id="rsi_period_val">
-                        <field name="NUM">14</field>
-                      </shadow>
-                    </value>
+                <value name="PERIOD">
+                  <block type="math_number" id="rsi_period">
+                    <field name="NUM">14</field>
                   </block>
-                </next>
+                </value>
               </block>
-            </statement>
+            </value>
             <next>
-              <block type="ema_statement" id="ema50_calc">
-                <field name="VARIABLE" id="xA(E1HjLb:#=L,.8~o)2">ema_50</field>
-                <statement name="STATEMENT">
-                  <block type="input_list" id="ema50_input" deletable="false" movable="false">
+              <block type="variables_set" id="calc_ema10">
+                <field name="VAR" id="rbdLLAbL9inEE38FyEtr">ema_10</field>
+                <value name="VALUE">
+                  <block type="emaa" id="ema10_block">
                     <value name="INPUT_LIST">
-                      <block type="ticks" id="ema50_ticks"></block>
+                      <block type="ticks" id="ema10_ticks"></block>
+                    </value>
+                    <value name="PERIOD">
+                      <block type="math_number" id="ema10_period">
+                        <field name="NUM">10</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="calc_ema50">
+                    <field name="VAR" id="xA(E1HjLb:#=L,.8~o)2">ema_50</field>
+                    <value name="VALUE">
+                      <block type="emaa" id="ema50_block">
+                        <value name="INPUT_LIST">
+                          <block type="ticks" id="ema50_ticks"></block>
+                        </value>
+                        <value name="PERIOD">
+                          <block type="math_number" id="ema50_period">
+                            <field name="NUM">50</field>
+                          </block>
+                        </value>
+                      </block>
                     </value>
                     <next>
-                      <block type="period" id="ema50_period" deletable="false" movable="false">
-                        <value name="PERIOD">
-                          <shadow type="math_number" id="ema50_period_val">
-                            <field name="NUM">50</field>
-                          </shadow>
-                        </value>
-                      </block>
-                    </next>
-                  </block>
-                </statement>
-                <next>
-                  <block type="ema_statement" id="ema10_calc">
-                    <field name="VARIABLE" id="rbdLLAbL9inEE38FyEtr">ema_10</field>
-                    <statement name="STATEMENT">
-                      <block type="input_list" id="ema10_input" deletable="false" movable="false">
-                        <value name="INPUT_LIST">
-                          <block type="ticks" id="ema10_ticks"></block>
-                        </value>
-                        <next>
-                          <block type="period" id="ema10_period" deletable="false" movable="false">
-                            <value name="PERIOD">
-                              <shadow type="math_number" id="ema10_period_val">
-                                <field name="NUM">10</field>
-                              </shadow>
-                            </value>
-                          </block>
-                        </next>
-                      </block>
-                    </statement>
-                    <next>
-                      <block type="macda_statement" id="macd_calc">
-                        <field name="VARIABLE" id="hK(XSqy+XV=Xw|9f1~O*">macd_value</field>
-                        <field name="MACDFIELDS_LIST">1</field>
-                        <statement name="STATEMENT">
-                          <block type="input_list" id="macd_input" deletable="false" movable="false">
+                      <block type="variables_set" id="calc_macd">
+                        <field name="VAR" id="hK(XSqy+XV=Xw|9f1~O*">macd_value</field>
+                        <value name="VALUE">
+                          <block type="macda" id="macda_block">
+                            <field name="MACDFIELDS_LIST">1</field>
                             <value name="INPUT_LIST">
                               <block type="ticks" id="macd_ticks"></block>
                             </value>
-                            <next>
-                              <block type="fast_ema_period" id="macd_fast" deletable="false" movable="false">
-                                <value name="FAST_EMA_PERIOD">
-                                  <shadow type="math_number" id="macd_fast_val">
-                                    <field name="NUM">12</field>
-                                  </shadow>
-                                </value>
-                                <next>
-                                  <block type="slow_ema_period" id="macd_slow" deletable="false" movable="false">
-                                    <value name="SLOW_EMA_PERIOD">
-                                      <shadow type="math_number" id="macd_slow_val">
-                                        <field name="NUM">26</field>
-                                      </shadow>
-                                    </value>
-                                    <next>
-                                      <block type="signal_ema_period" id="macd_signal" deletable="false" movable="false">
-                                        <value name="SIGNAL_EMA_PERIOD">
-                                          <shadow type="math_number" id="macd_signal_val">
-                                            <field name="NUM">9</field>
-                                          </shadow>
-                                        </value>
-                                      </block>
-                                    </next>
-                                  </block>
-                                </next>
+                            <value name="FAST_EMA_PERIOD">
+                              <block type="math_number" id="macd_fast">
+                                <field name="NUM">12</field>
                               </block>
-                            </next>
+                            </value>
+                            <value name="SLOW_EMA_PERIOD">
+                              <block type="math_number" id="macd_slow">
+                                <field name="NUM">26</field>
+                              </block>
+                            </value>
+                            <value name="SIGNAL_EMA_PERIOD">
+                              <block type="math_number" id="macd_signal">
+                                <field name="NUM">9</field>
+                              </block>
+                            </value>
                           </block>
-                        </statement>
+                        </value>
                         <next>
                           <block type="controls_if" id="call_logic">
                             <value name="IF0">
@@ -338,33 +354,33 @@
                                                 </value>
                                               </block>
                                             </value>
-                                            <value name="B">
-                                              <block type="math_number" id="rsi_limit_put">
-                                                <field name="NUM">30</field>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="math_number" id="rsi_limit_put">
+                                            <field name="NUM">30</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="logic_compare" id="macd_put">
+                                        <field name="OP">LT</field>
+                                        <value name="A">
+                                          <block type="lists_getIndex" id="get_macd_put">
+                                            <mutation xmlns="http://www.w3.org/1999/xhtml" statement="false" at="false"></mutation>
+                                            <field name="MODE">GET</field>
+                                            <field name="WHERE">LAST</field>
+                                            <value name="VALUE">
+                                              <block type="variables_get" id="v_macd_put">
+                                                <field name="VAR" id="hK(XSqy+XV=Xw|9f1~O*">macd_value</field>
                                               </block>
                                             </value>
                                           </block>
                                         </value>
                                         <value name="B">
-                                          <block type="logic_compare" id="macd_put">
-                                            <field name="OP">LT</field>
-                                            <value name="A">
-                                              <block type="lists_getIndex" id="get_macd_put">
-                                                <mutation xmlns="http://www.w3.org/1999/xhtml" statement="false" at="false"></mutation>
-                                                <field name="MODE">GET</field>
-                                                <field name="WHERE">LAST</field>
-                                                <value name="VALUE">
-                                                  <block type="variables_get" id="v_macd_put">
-                                                    <field name="VAR" id="hK(XSqy+XV=Xw|9f1~O*">macd_value</field>
-                                                  </block>
-                                                </value>
-                                              </block>
-                                            </value>
-                                            <value name="B">
-                                              <block type="math_number" id="zero_put">
-                                                <field name="NUM">0</field>
-                                              </block>
-                                            </value>
+                                          <block type="math_number" id="zero_put">
+                                            <field name="NUM">0</field>
                                           </block>
                                         </value>
                                       </block>
@@ -391,7 +407,7 @@
       </block>
     </statement>
   </block>
-  <block type="during_purchase" id="LUAfCC]s=W[up5d#d?R=" x="0" y="2000">
+  <block type="during_purchase" id="during_pur" x="0" y="2000">
     <statement name="DURING_PURCHASE_STACK">
       <block type="controls_if" id="sell_check">
         <value name="IF0">
