@@ -74,9 +74,6 @@
           </shadow>
         </value>
         <value name="AMOUNT">
-          <shadow type="math_number_positive" id="kp!Ox]ReUKgZ$/irfGUH">
-            <field name="NUM">0.35</field>
-          </shadow>
           <block type="variables_get" id="sz7Wu1_+vCGrh;:qj}Xg">
             <field name="VAR" id="1^@2A}e:N.=x]kkbANpA">stake</field>
           </block>
@@ -181,215 +178,225 @@
                       </block>
                     </statement>
                     <next>
-                      <block type="variables_set" id="wT6u^:+w6kR(PXWe#*Zx">
-                        <field name="VAR" id="Dgo$4()JYC!3#ZoYoV[f">tick_velocity</field>
-                        <value name="VALUE">
-                          <block type="math_arithmetic" id="[wE;q%wfAE,@BQg2-%?*">
-                            <field name="OP">MINUS</field>
+                      <block type="controls_if" id="call_logic">
+                        <value name="IF0">
+                          <block type="logic_operation" id="call_and1" inline="false">
+                            <field name="OP">AND</field>
                             <value name="A">
-                              <shadow type="math_number" id="uwt;W41MJILw/Y=+A#E~">
-                                <field name="NUM">1</field>
-                              </shadow>
-                              <block type="tick" id="rYk2n/[^#RGAc$flT%O@"></block>
+                              <block type="logic_compare" id="ema_cross_call">
+                                <field name="OP">GT</field>
+                                <value name="A">
+                                  <block type="lists_getIndex" id="get_ema10_call">
+                                    <mutation xmlns="http://www.w3.org/1999/xhtml" statement="false" at="true"></mutation>
+                                    <field name="MODE">GET</field>
+                                    <field name="WHERE">FROM_START</field>
+                                    <value name="VALUE">
+                                      <block type="variables_get" id="v_ema10_call">
+                                        <field name="VAR" id="rbdLLAbL9inEE38FyEtr">ema_10</field>
+                                      </block>
+                                    </value>
+                                    <value name="AT">
+                                      <block type="math_number" id="idx1_call1">
+                                        <field name="NUM">1</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="lists_getIndex" id="get_ema50_call">
+                                    <mutation xmlns="http://www.w3.org/1999/xhtml" statement="false" at="true"></mutation>
+                                    <field name="MODE">GET</field>
+                                    <field name="WHERE">FROM_START</field>
+                                    <value name="VALUE">
+                                      <block type="variables_get" id="v_ema50_call">
+                                        <field name="VAR" id="xA(E1HjLb:#=L,.8~o)2">ema_50</field>
+                                      </block>
+                                    </value>
+                                    <value name="AT">
+                                      <block type="math_number" id="idx1_call2">
+                                        <field name="NUM">1</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
                             </value>
                             <value name="B">
-                              <shadow type="math_number" id="N8InPH~{p5d-R0z@,di6">
-                                <field name="NUM">1</field>
-                              </shadow>
-                              <block type="lists_getIndex" id="v5:]1=%s+2+rzHji`VhM">
-                                <mutation xmlns="http://www.w3.org/1999/xhtml" statement="false" at="true"></mutation>
-                                <field name="MODE">GET</field>
-                                <field name="WHERE">FROM_START</field>
-                                <value name="VALUE">
-                                  <block type="ticks" id="r%EXHgMch_b2Ltuf8`j("></block>
+                              <block type="logic_operation" id="call_and2" inline="false">
+                                <field name="OP">AND</field>
+                                <value name="A">
+                                  <block type="logic_compare" id="rsi_call">
+                                    <field name="OP">LT</field>
+                                    <value name="A">
+                                      <block type="lists_getIndex" id="get_rsi_call">
+                                        <mutation xmlns="http://www.w3.org/1999/xhtml" statement="false" at="true"></mutation>
+                                        <field name="MODE">GET</field>
+                                        <field name="WHERE">FROM_START</field>
+                                        <value name="VALUE">
+                                          <block type="variables_get" id="v_rsi_call">
+                                            <field name="VAR" id="aUry~6VDtwYz]c!k}x:n">rsi</field>
+                                          </block>
+                                        </value>
+                                        <value name="AT">
+                                          <block type="math_number" id="idx1_call3">
+                                            <field name="NUM">1</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="math_number" id="rsi_limit_call">
+                                        <field name="NUM">70</field>
+                                      </block>
+                                    </value>
+                                  </block>
                                 </value>
-                                <value name="AT">
-                                  <block type="math_number" id="F]+Y|}Z4(j_`5T7m.g%9">
-                                    <field name="NUM">2</field>
+                                <value name="B">
+                                  <block type="logic_compare" id="macd_call">
+                                    <field name="OP">GT</field>
+                                    <value name="A">
+                                      <block type="lists_getIndex" id="get_macd_call">
+                                        <mutation xmlns="http://www.w3.org/1999/xhtml" statement="false" at="true"></mutation>
+                                        <field name="MODE">GET</field>
+                                        <field name="WHERE">FROM_START</field>
+                                        <value name="VALUE">
+                                          <block type="variables_get" id="v_macd_call">
+                                            <field name="VAR" id="hK(XSqy+XV=Xw|9f1~O*">macd_value</field>
+                                          </block>
+                                        </value>
+                                        <value name="AT">
+                                          <block type="math_number" id="idx1_call4">
+                                            <field name="NUM">1</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="math_number" id="zero_call">
+                                        <field name="NUM">0</field>
+                                      </block>
+                                    </value>
                                   </block>
                                 </value>
                               </block>
                             </value>
                           </block>
                         </value>
+                        <statement name="DO0">
+                          <block type="purchase" id="pur_call">
+                            <field name="PURCHASE_LIST">CALL</field>
+                          </block>
+                        </statement>
                         <next>
-                          <block type="variables_set" id="QX3dhp)cm~jy#6`[V}z2">
-                            <field name="VAR" id="k-xD03P2k0z.[Kh]Sq9X">swing_low</field>
-                            <value name="VALUE">
-                              <block type="math_on_list" id="9M=J2zmRaO^:+o:z1)iD">
-                                <field name="OP">MIN</field>
-                                <value name="LIST">
-                                  <block type="ticks" id="7w`bV:YVCQ9zA2fIklk="></block>
-                                </value>
-                              </block>
-                            </value>
-                            <next>
-                              <block type="controls_if" id="K2yR-?tRUKeHMFFoMF~I">
-                                <value name="IF0">
-                                  <block type="logic_compare" id="dbdqpM-)-Jf7)yR4*3]3">
-                                    <field name="OP">GT</field>
+                          <block type="controls_if" id="put_logic">
+                            <value name="IF0">
+                              <block type="logic_operation" id="put_and1" inline="false">
+                                <field name="OP">AND</field>
+                                <value name="A">
+                                  <block type="logic_compare" id="ema_cross_put">
+                                    <field name="OP">LT</field>
                                     <value name="A">
-                                      <block type="lists_length" id="Yp_GcQp`[*{E9F;4!O1`">
+                                      <block type="lists_getIndex" id="get_ema10_put">
+                                        <mutation xmlns="http://www.w3.org/1999/xhtml" statement="false" at="true"></mutation>
+                                        <field name="MODE">GET</field>
+                                        <field name="WHERE">FROM_START</field>
                                         <value name="VALUE">
-                                          <block type="logic_compare" id="-9Y1-i+0X.W[D$z9mdeH">
-                                            <field name="OP">GT</field>
-                                            <value name="A">
-                                              <block type="ticks" id="|OgCMsxPPGPR}Ar`06Xm"></block>
-                                            </value>
-                                            <value name="B">
-                                              <block type="logic_operation" id="x0^[SKAdJ*NdexX3^klo">
-                                                <field name="OP">AND</field>
-                                                <value name="A">
-                                                  <block type="math_number" id="*Mg~.CTtL`dxNeq=V7l~">
-                                                    <field name="NUM">50</field>
-                                                  </block>
-                                                </value>
-                                                <value name="B">
-                                                  <block type="tick" id="z,jU?6B2#c-}p71x/Eg$"></block>
-                                                </value>
-                                              </block>
-                                            </value>
+                                          <block type="variables_get" id="v_ema10_put">
+                                            <field name="VAR" id="rbdLLAbL9inEE38FyEtr">ema_10</field>
+                                          </block>
+                                        </value>
+                                        <value name="AT">
+                                          <block type="math_number" id="idx1_put1">
+                                            <field name="NUM">1</field>
                                           </block>
                                         </value>
                                       </block>
                                     </value>
                                     <value name="B">
-                                      <block type="logic_operation" id="-al%^%AO5?4ZYhugVs_E">
-                                        <field name="OP">AND</field>
-                                        <value name="A">
-                                          <block type="variables_get" id="8MiwD1!nz,5M{!yqw-[/">
+                                      <block type="lists_getIndex" id="get_ema50_put">
+                                        <mutation xmlns="http://www.w3.org/1999/xhtml" statement="false" at="true"></mutation>
+                                        <field name="MODE">GET</field>
+                                        <field name="WHERE">FROM_START</field>
+                                        <value name="VALUE">
+                                          <block type="variables_get" id="v_ema50_put">
                                             <field name="VAR" id="xA(E1HjLb:#=L,.8~o)2">ema_50</field>
                                           </block>
                                         </value>
-                                        <value name="B">
-                                          <block type="logic_compare" id="@tfTrs$zguFRjd|w)_N~">
-                                            <field name="OP">GT</field>
-                                            <value name="A">
-                                              <block type="variables_get" id="DS_7R4;{zV{iqf?1Ow-k">
-                                                <field name="VAR" id="rbdLLAbL9inEE38FyEtr">ema_10</field>
-                                              </block>
-                                            </value>
-                                            <value name="B">
-                                              <block type="logic_operation" id="%.T9L#XtB2LSc~`;%o!+">
-                                                <field name="OP">AND</field>
-                                                <value name="A">
-                                                  <block type="variables_get" id="rl+K*=O3eeHe}c2CaL(]">
-                                                    <field name="VAR" id="xA(E1HjLb:#=L,.8~o)2">ema_50</field>
-                                                  </block>
-                                                </value>
-                                                <value name="B">
-                                                  <block type="logic_compare" id="2_(5n-`dCquKQsHq$:W+">
-                                                    <field name="OP">GT</field>
-                                                    <value name="A">
-                                                      <block type="variables_get" id="r^TV=9@cDlq#iWOJQWvG">
-                                                        <field name="VAR" id="Dgo$4()JYC!3#ZoYoV[f">tick_velocity</field>
-                                                      </block>
-                                                    </value>
-                                                    <value name="B">
-                                                      <block type="logic_operation" id="vtzlPwBVH0Y*t8cl7,O7">
-                                                        <field name="OP">AND</field>
-                                                        <value name="A">
-                                                          <block type="math_number" id="%[dG|kx91d$n1ou;L.Mr">
-                                                            <field name="NUM">0</field>
-                                                          </block>
-                                                        </value>
-                                                        <value name="B">
-                                                          <block type="logic_compare" id=".`T^Fgm$zFpedxMW!Y7?">
-                                                            <field name="OP">LT</field>
-                                                            <value name="A">
-                                                              <block type="variables_get" id="VD?.@lob@]ZsVM@}ZlOO">
-                                                                <field name="VAR" id="aUry~6VDtwYz]c!k}x:n">rsi</field>
-                                                              </block>
-                                                            </value>
-                                                            <value name="B">
-                                                              <block type="logic_operation" id="8IECDm]HONZz[5E9^={%">
-                                                                <field name="OP">AND</field>
-                                                                <value name="A">
-                                                                  <block type="logic_operation" id="cI1*%K~RxRvv]MUiH35x">
-                                                                    <field name="OP">AND</field>
-                                                                    <value name="A">
-                                                                      <block type="math_number" id="a:XD/c=}NVM2h{Qab.]~">
-                                                                        <field name="NUM">70</field>
-                                                                      </block>
-                                                                    </value>
-                                                                    <value name="B">
-                                                                      <block type="logic_compare" id="uzb0W2,^lmPXKKIm`0j@">
-                                                                        <field name="OP">GT</field>
-                                                                        <value name="A">
-                                                                          <block type="lists_getIndex" id="]V|YM)R6nooPPCCC98`A">
-                                                                            <mutation xmlns="http://www.w3.org/1999/xhtml" statement="false" at="true"></mutation>
-                                                                            <field name="MODE">GET</field>
-                                                                            <field name="WHERE">FROM_START</field>
-                                                                            <value name="VALUE">
-                                                                              <block type="variables_get" id=")b|jlNx4DEaQU}$u[+FF">
-                                                                                <field name="VAR" id="hK(XSqy+XV=Xw|9f1~O*">macd_value</field>
-                                                                              </block>
-                                                                            </value>
-                                                                            <value name="AT">
-                                                                              <block type="math_number" id="23drxg$-TQxUzYs7JF1E">
-                                                                                <field name="NUM">1</field>
-                                                                              </block>
-                                                                            </value>
-                                                                          </block>
-                                                                        </value>
-                                                                        <value name="B">
-                                                                          <block type="math_number" id="?9I0=8VX!okI+61Hq,n`">
-                                                                            <field name="NUM">0</field>
-                                                                          </block>
-                                                                        </value>
-                                                                      </block>
-                                                                    </value>
-                                                                  </block>
-                                                                </value>
-                                                                <value name="B">
-                                                                  <block type="logic_compare" id="SOk)_jd]IGAQVA$;8f9J">
-                                                                    <field name="OP">LT</field>
-                                                                    <value name="A">
-                                                                      <block type="tick" id="twC2yvqm[2]I_xF4ZAR`"></block>
-                                                                    </value>
-                                                                    <value name="B">
-                                                                      <block type="math_arithmetic" id="w1~)WQ7+D*yv5xVk_P96">
-                                                                        <field name="OP">MINUS</field>
-                                                                        <value name="A">
-                                                                          <shadow type="math_number" id="J,zPVBc~sMTE~ctJ1iBp">
-                                                                            <field name="NUM">1</field>
-                                                                          </shadow>
-                                                                          <block type="variables_get" id="*[(nJB!EWW7Q+|okcyec">
-                                                                            <field name="VAR" id="pMoI,a{C$|tbu9Y#pMT6">swing_high</field>
-                                                                          </block>
-                                                                        </value>
-                                                                        <value name="B">
-                                                                          <shadow type="math_number" id=";=]rVf|6H_)6E@9Y)n0{">
-                                                                            <field name="NUM">1</field>
-                                                                          </shadow>
-                                                                        </value>
-                                                                      </block>
-                                                                    </value>
-                                                                  </block>
-                                                                </value>
-                                                              </block>
-                                                            </value>
-                                                          </block>
-                                                        </value>
-                                                      </block>
-                                                    </value>
-                                                  </block>
-                                                </value>
-                                              </block>
-                                            </value>
+                                        <value name="AT">
+                                          <block type="math_number" id="idx1_put2">
+                                            <field name="NUM">1</field>
                                           </block>
                                         </value>
                                       </block>
                                     </value>
                                   </block>
                                 </value>
-                                <next>
-                                  <block type="purchase" id="%/c2|IntzO9UyYh,5x0i">
-                                    <field name="PURCHASE_LIST">CALL</field>
+                                <value name="B">
+                                  <block type="logic_operation" id="put_and2" inline="false">
+                                    <field name="OP">AND</field>
+                                    <value name="A">
+                                      <block type="logic_compare" id="rsi_put">
+                                        <field name="OP">GT</field>
+                                        <value name="A">
+                                          <block type="lists_getIndex" id="get_rsi_put">
+                                            <mutation xmlns="http://www.w3.org/1999/xhtml" statement="false" at="true"></mutation>
+                                            <field name="MODE">GET</field>
+                                            <field name="WHERE">FROM_START</field>
+                                            <value name="VALUE">
+                                              <block type="variables_get" id="v_rsi_put">
+                                                <field name="VAR" id="aUry~6VDtwYz]c!k}x:n">rsi</field>
+                                              </block>
+                                            </value>
+                                            <value name="AT">
+                                              <block type="math_number" id="idx1_put3">
+                                                <field name="NUM">1</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="math_number" id="rsi_limit_put">
+                                            <field name="NUM">30</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="logic_compare" id="macd_put">
+                                        <field name="OP">LT</field>
+                                        <value name="A">
+                                          <block type="lists_getIndex" id="get_macd_put">
+                                            <mutation xmlns="http://www.w3.org/1999/xhtml" statement="false" at="true"></mutation>
+                                            <field name="MODE">GET</field>
+                                            <field name="WHERE">FROM_START</field>
+                                            <value name="VALUE">
+                                              <block type="variables_get" id="v_macd_put">
+                                                <field name="VAR" id="hK(XSqy+XV=Xw|9f1~O*">macd_value</field>
+                                              </block>
+                                            </value>
+                                            <value name="AT">
+                                              <block type="math_number" id="idx1_put4">
+                                                <field name="NUM">1</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="math_number" id="zero_put">
+                                            <field name="NUM">0</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
                                   </block>
-                                </next>
+                                </value>
                               </block>
-                            </next>
+                            </value>
+                            <statement name="DO0">
+                              <block type="purchase" id="pur_put">
+                                <field name="PURCHASE_LIST">PUT</field>
+                              </block>
+                            </statement>
                           </block>
                         </next>
                       </block>
@@ -462,25 +469,5 @@
         </next>
       </block>
     </statement>
-  </block>
-  <block type="math_number" id="5*U={eukd71zGsFor:c/" disabled="true" x="808" y="1390">
-    <field name="NUM">0</field>
-  </block>
-  <block type="variables_set" id="SLKN}+2*]#^lZPEuYXN(" disabled="true" x="50" y="1755">
-    <field name="VAR" id="pMoI,a{C$|tbu9Y#pMT6">swing_high</field>
-    <value name="VALUE">
-      <block type="math_on_list" id="4[UI~7|1,SaA{Uc;SV;e">
-        <field name="OP">MAX</field>
-        <value name="LIST">
-          <block type="ticks" id="L[J:MR*4%;8.e34/GVU!"></block>
-        </value>
-      </block>
-    </value>
-  </block>
-  <block type="math_number" id="l~VzYw[Tbww4(3D8D5p%" disabled="true" x="1781" y="1797">
-    <field name="NUM">0</field>
-  </block>
-  <block type="math_number" id="pnarcK2-T;u^Y|7%US{l" disabled="true" x="0" y="2181">
-    <field name="NUM">0</field>
   </block>
 </xml>
