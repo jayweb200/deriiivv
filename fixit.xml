@@ -25,7 +25,7 @@
                 <field name="TYPE_LIST">both</field>
                 <next>
                   <block type="trade_definition_candleinterval" id="O~dL+E#%q@r19PWU,GHr" deletable="false" movable="false">
-                    <field name="CANDLEINTERVAL_LIST">1</field>
+                    <field name="CANDLEINTERVAL_LIST">60</field>
                     <next>
                       <block type="trade_definition_restartbuysell" id="lI!}Fl}4aa5VoP}CIdo3" deletable="false" movable="false">
                         <field name="TIME_MACHINE_ENABLED">FALSE</field>
@@ -93,7 +93,9 @@
                 <value name="A">
                   <block type="lists_length" id="get_len_candles">
                     <value name="VALUE">
-                      <block type="candles" id="get_c"></block>
+                      <block type="ohlc_values" id="get_c">
+                        <field name="OHLCFIELD_LIST">close</field>
+                      </block>
                     </value>
                   </block>
                 </value>
@@ -129,7 +131,9 @@
             <statement name="STATEMENT">
               <block type="input_list" id="rsi_in" deletable="false" movable="false">
                 <value name="INPUT_LIST">
-                  <block type="candles" id="rsi_candles"></block>
+                  <block type="ohlc_values" id="rsi_candles">
+                    <field name="OHLCFIELD_LIST">close</field>
+                  </block>
                 </value>
                 <next>
                   <block type="period" id="rsi_per" deletable="false" movable="false">
@@ -148,7 +152,9 @@
                 <statement name="STATEMENT">
                   <block type="input_list" id="ema50_in" deletable="false" movable="false">
                     <value name="INPUT_LIST">
-                      <block type="candles" id="ema50_candles"></block>
+                      <block type="ohlc_values" id="ema50_candles">
+                        <field name="OHLCFIELD_LIST">close</field>
+                      </block>
                     </value>
                     <next>
                       <block type="period" id="ema50_per" deletable="false" movable="false">
@@ -167,7 +173,9 @@
                     <statement name="STATEMENT">
                       <block type="input_list" id="ema10_in" deletable="false" movable="false">
                         <value name="INPUT_LIST">
-                          <block type="candles" id="ema10_candles"></block>
+                          <block type="ohlc_values" id="ema10_candles">
+                            <field name="OHLCFIELD_LIST">close</field>
+                          </block>
                         </value>
                         <next>
                           <block type="period" id="ema10_per" deletable="false" movable="false">
@@ -187,7 +195,9 @@
                         <statement name="STATEMENT">
                           <block type="input_list" id="macd_in" deletable="false" movable="false">
                             <value name="INPUT_LIST">
-                              <block type="candles" id="macd_candles"></block>
+                              <block type="ohlc_values" id="macd_candles">
+                                <field name="OHLCFIELD_LIST">close</field>
+                              </block>
                             </value>
                             <next>
                               <block type="fast_ema_period" id="macd_f" deletable="false" movable="false">
