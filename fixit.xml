@@ -64,25 +64,33 @@
               <block type="variables_set" id="init_rsi">
                 <field name="VAR" id="aUry~6VDtwYz]c!k}x:n">rsi</field>
                 <value name="VALUE">
-                  <block type="lists_create_empty" id="empty_rsi"></block>
+                  <block type="math_number" id="rsi_zero">
+                    <field name="NUM">0</field>
+                  </block>
                 </value>
                 <next>
                   <block type="variables_set" id="init_ema50">
                     <field name="VAR" id="xA(E1HjLb:#=L,.8~o)2">ema_50</field>
                     <value name="VALUE">
-                      <block type="lists_create_empty" id="empty_ema50"></block>
+                      <block type="math_number" id="ema50_zero">
+                        <field name="NUM">0</field>
+                      </block>
                     </value>
                     <next>
                       <block type="variables_set" id="init_ema10">
                         <field name="VAR" id="rbdLLAbL9inEE38FyEtr">ema_10</field>
                         <value name="VALUE">
-                          <block type="lists_create_empty" id="empty_ema10"></block>
+                          <block type="math_number" id="ema10_zero">
+                            <field name="NUM">0</field>
+                          </block>
                         </value>
                         <next>
                           <block type="variables_set" id="init_macd">
                             <field name="VAR" id="hK(XSqy+XV=Xw|9f1~O*">macd_value</field>
                             <value name="VALUE">
-                              <block type="lists_create_empty" id="empty_macd"></block>
+                              <block type="math_number" id="macd_zero">
+                                <field name="NUM">0</field>
+                              </block>
                             </value>
                           </block>
                         </next>
@@ -115,7 +123,7 @@
   </block>
   <block type="before_purchase" id="eaSHCk8/b2DtM?0N)EM2" deletable="false" x="0" y="742">
     <statement name="BEFOREPURCHASE_STACK">
-      <block type="controls_if" id="guard_50">
+      <block type="controls_if" id="guard_robust">
         <value name="IF0">
           <block type="logic_operation" id="dual_guard" inline="true">
             <field name="OP">AND</field>
@@ -127,13 +135,14 @@
                     <value name="VALUE">
                       <block type="ohlc_values" id="get_c">
                         <field name="OHLCFIELD_LIST">close</field>
+                        <field name="CANDLEINTERVAL_LIST">default</field>
                       </block>
                     </value>
                   </block>
                 </value>
                 <value name="B">
-                  <block type="math_number" id="val_50">
-                    <field name="NUM">50</field>
+                  <block type="math_number" id="val_60">
+                    <field name="NUM">60</field>
                   </block>
                 </value>
               </block>
@@ -149,8 +158,8 @@
                   </block>
                 </value>
                 <value name="B">
-                  <block type="math_number" id="val_5">
-                    <field name="NUM">5</field>
+                  <block type="math_number" id="val_10">
+                    <field name="NUM">10</field>
                   </block>
                 </value>
               </block>
@@ -165,6 +174,7 @@
                 <value name="INPUT_LIST">
                   <block type="ohlc_values" id="rsi_candles">
                     <field name="OHLCFIELD_LIST">close</field>
+                    <field name="CANDLEINTERVAL_LIST">default</field>
                   </block>
                 </value>
                 <next>
@@ -186,6 +196,7 @@
                     <value name="INPUT_LIST">
                       <block type="ohlc_values" id="ema50_candles">
                         <field name="OHLCFIELD_LIST">close</field>
+                        <field name="CANDLEINTERVAL_LIST">default</field>
                       </block>
                     </value>
                     <next>
@@ -207,6 +218,7 @@
                         <value name="INPUT_LIST">
                           <block type="ohlc_values" id="ema10_candles">
                             <field name="OHLCFIELD_LIST">close</field>
+                            <field name="CANDLEINTERVAL_LIST">default</field>
                           </block>
                         </value>
                         <next>
@@ -229,6 +241,7 @@
                             <value name="INPUT_LIST">
                               <block type="ohlc_values" id="macd_candles">
                                 <field name="OHLCFIELD_LIST">close</field>
+                                <field name="CANDLEINTERVAL_LIST">default</field>
                               </block>
                             </value>
                             <next>
@@ -269,27 +282,13 @@
                                   <block type="logic_compare" id="call_ema_comp">
                                     <field name="OP">GT</field>
                                     <value name="A">
-                                      <block type="lists_getIndex" id="get_ema10_val_call">
-                                        <mutation xmlns="http://www.w3.org/1999/xhtml" statement="false" at="false"></mutation>
-                                        <field name="MODE">GET</field>
-                                        <field name="WHERE">LAST</field>
-                                        <value name="VALUE">
-                                          <block type="variables_get" id="get_ema10_list_call">
-                                            <field name="VAR" id="rbdLLAbL9inEE38FyEtr">ema_10</field>
-                                          </block>
-                                        </value>
+                                      <block type="variables_get" id="get_ema10_call">
+                                        <field name="VAR" id="rbdLLAbL9inEE38FyEtr">ema_10</field>
                                       </block>
                                     </value>
                                     <value name="B">
-                                      <block type="lists_getIndex" id="get_ema50_val_call">
-                                        <mutation xmlns="http://www.w3.org/1999/xhtml" statement="false" at="false"></mutation>
-                                        <field name="MODE">GET</field>
-                                        <field name="WHERE">LAST</field>
-                                        <value name="VALUE">
-                                          <block type="variables_get" id="get_ema50_list_call">
-                                            <field name="VAR" id="xA(E1HjLb:#=L,.8~o)2">ema_50</field>
-                                          </block>
-                                        </value>
+                                      <block type="variables_get" id="get_ema50_call">
+                                        <field name="VAR" id="xA(E1HjLb:#=L,.8~o)2">ema_50</field>
                                       </block>
                                     </value>
                                   </block>
@@ -301,15 +300,8 @@
                                       <block type="logic_compare" id="call_rsi_comp">
                                         <field name="OP">LT</field>
                                         <value name="A">
-                                          <block type="lists_getIndex" id="get_rsi_val_call">
-                                            <mutation xmlns="http://www.w3.org/1999/xhtml" statement="false" at="false"></mutation>
-                                            <field name="MODE">GET</field>
-                                            <field name="WHERE">LAST</field>
-                                            <value name="VALUE">
-                                              <block type="variables_get" id="get_rsi_list_call">
-                                                <field name="VAR" id="aUry~6VDtwYz]c!k}x:n">rsi</field>
-                                              </block>
-                                            </value>
+                                          <block type="variables_get" id="get_rsi_call">
+                                            <field name="VAR" id="aUry~6VDtwYz]c!k}x:n">rsi</field>
                                           </block>
                                         </value>
                                         <value name="B">
@@ -323,15 +315,8 @@
                                       <block type="logic_compare" id="call_macd_comp">
                                         <field name="OP">GT</field>
                                         <value name="A">
-                                          <block type="lists_getIndex" id="get_macd_val_call">
-                                            <mutation xmlns="http://www.w3.org/1999/xhtml" statement="false" at="false"></mutation>
-                                            <field name="MODE">GET</field>
-                                            <field name="WHERE">LAST</field>
-                                            <value name="VALUE">
-                                              <block type="variables_get" id="get_macd_list_call">
-                                                <field name="VAR" id="hK(XSqy+XV=Xw|9f1~O*">macd_value</field>
-                                              </block>
-                                            </value>
+                                          <block type="variables_get" id="get_macd_call">
+                                            <field name="VAR" id="hK(XSqy+XV=Xw|9f1~O*">macd_value</field>
                                           </block>
                                         </value>
                                         <value name="B">
@@ -359,27 +344,13 @@
                                       <block type="logic_compare" id="put_ema_comp">
                                         <field name="OP">LT</field>
                                         <value name="A">
-                                          <block type="lists_getIndex" id="get_ema10_val_put">
-                                            <mutation xmlns="http://www.w3.org/1999/xhtml" statement="false" at="false"></mutation>
-                                            <field name="MODE">GET</field>
-                                            <field name="WHERE">LAST</field>
-                                            <value name="VALUE">
-                                              <block type="variables_get" id="get_ema10_list_put">
-                                                <field name="VAR" id="rbdLLAbL9inEE38FyEtr">ema_10</field>
-                                              </block>
-                                            </value>
+                                          <block type="variables_get" id="get_ema10_put">
+                                            <field name="VAR" id="rbdLLAbL9inEE38FyEtr">ema_10</field>
                                           </block>
                                         </value>
                                         <value name="B">
-                                          <block type="lists_getIndex" id="get_ema50_val_put">
-                                            <mutation xmlns="http://www.w3.org/1999/xhtml" statement="false" at="false"></mutation>
-                                            <field name="MODE">GET</field>
-                                            <field name="WHERE">LAST</field>
-                                            <value name="VALUE">
-                                              <block type="variables_get" id="get_ema50_list_put">
-                                                <field name="VAR" id="xA(E1HjLb:#=L,.8~o)2">ema_50</field>
-                                              </block>
-                                            </value>
+                                          <block type="variables_get" id="get_ema50_put">
+                                            <field name="VAR" id="xA(E1HjLb:#=L,.8~o)2">ema_50</field>
                                           </block>
                                         </value>
                                       </block>
@@ -391,15 +362,8 @@
                                           <block type="logic_compare" id="put_rsi_comp">
                                             <field name="OP">GT</field>
                                             <value name="A">
-                                              <block type="lists_getIndex" id="get_rsi_val_put">
-                                                <mutation xmlns="http://www.w3.org/1999/xhtml" statement="false" at="false"></mutation>
-                                                <field name="MODE">GET</field>
-                                                <field name="WHERE">LAST</field>
-                                                <value name="VALUE">
-                                                  <block type="variables_get" id="get_rsi_list_put">
-                                                    <field name="VAR" id="aUry~6VDtwYz]c!k}x:n">rsi</field>
-                                                  </block>
-                                                </value>
+                                              <block type="variables_get" id="get_rsi_put">
+                                                <field name="VAR" id="aUry~6VDtwYz]c!k}x:n">rsi</field>
                                               </block>
                                             </value>
                                             <value name="B">
@@ -413,15 +377,8 @@
                                           <block type="logic_compare" id="put_macd_comp">
                                             <field name="OP">LT</field>
                                             <value name="A">
-                                              <block type="lists_getIndex" id="get_macd_val_put">
-                                                <mutation xmlns="http://www.w3.org/1999/xhtml" statement="false" at="false"></mutation>
-                                                <field name="MODE">GET</field>
-                                                <field name="WHERE">LAST</field>
-                                                <value name="VALUE">
-                                                  <block type="variables_get" id="get_macd_list_put">
-                                                    <field name="VAR" id="hK(XSqy+XV=Xw|9f1~O*">macd_value</field>
-                                                  </block>
-                                                </value>
+                                              <block type="variables_get" id="get_macd_put">
+                                                <field name="VAR" id="hK(XSqy+XV=Xw|9f1~O*">macd_value</field>
                                               </block>
                                             </value>
                                             <value name="B">
