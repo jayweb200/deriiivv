@@ -83,36 +83,36 @@
   </block>
   <block type="before_purchase" id="eaSHCk8/b2DtM?0N)EM2" deletable="false" x="0" y="742">
     <statement name="BEFOREPURCHASE_STACK">
-      <block type="controls_if" id="min_data_check_wrap">
+      <block type="controls_if" id="guard_100">
         <value name="IF0">
-          <block type="logic_compare" id="len_comp">
+          <block type="logic_compare" id="len_chk_val">
             <field name="OP">GTE</field>
             <value name="A">
-              <block type="lists_length" id="get_ticks_len">
+              <block type="lists_length" id="get_len_t">
                 <value name="VALUE">
-                  <block type="ticks" id="get_ticks_obj"></block>
+                  <block type="ticks" id="get_t_obj"></block>
                 </value>
               </block>
             </value>
             <value name="B">
-              <block type="math_number" id="min_len_val">
+              <block type="math_number" id="val_100">
                 <field name="NUM">100</field>
               </block>
             </value>
           </block>
         </value>
         <statement name="DO0">
-          <block type="rsi_statement" id="rsi_calc_id">
+          <block type="rsi_statement" id="rsi_calc_blk">
             <field name="VARIABLE" id="aUry~6VDtwYz]c!k}x:n">rsi</field>
             <statement name="STATEMENT">
-              <block type="input_list" id="rsi_in" deletable="false" movable="false">
+              <block type="input_list" id="rsi_in_blk" deletable="false" movable="false">
                 <value name="INPUT_LIST">
-                  <block type="ticks" id="rsi_ticks_id"></block>
+                  <block type="ticks" id="rsi_t_obj"></block>
                 </value>
                 <next>
-                  <block type="period" id="rsi_per_id" deletable="false" movable="false">
+                  <block type="period" id="rsi_p_blk" deletable="false" movable="false">
                     <value name="PERIOD">
-                      <shadow type="math_number" id="rsi_num">
+                      <shadow type="math_number" id="rsi_n_val">
                         <field name="NUM">14</field>
                       </shadow>
                     </value>
@@ -121,17 +121,17 @@
               </block>
             </statement>
             <next>
-              <block type="ema_statement" id="ema50_calc_id">
+              <block type="ema_statement" id="ema50_calc_blk">
                 <field name="VARIABLE" id="xA(E1HjLb:#=L,.8~o)2">ema_50</field>
                 <statement name="STATEMENT">
-                  <block type="input_list" id="ema50_in" deletable="false" movable="false">
+                  <block type="input_list" id="ema50_in_blk" deletable="false" movable="false">
                     <value name="INPUT_LIST">
-                      <block type="ticks" id="ema50_ticks_id"></block>
+                      <block type="ticks" id="ema50_t_obj"></block>
                     </value>
                     <next>
-                      <block type="period" id="ema50_per_id" deletable="false" movable="false">
+                      <block type="period" id="ema50_p_blk" deletable="false" movable="false">
                         <value name="PERIOD">
-                          <shadow type="math_number" id="ema50_num">
+                          <shadow type="math_number" id="ema50_n_val">
                             <field name="NUM">50</field>
                           </shadow>
                         </value>
@@ -140,17 +140,17 @@
                   </block>
                 </statement>
                 <next>
-                  <block type="ema_statement" id="ema10_calc_id">
+                  <block type="ema_statement" id="ema10_calc_blk">
                     <field name="VARIABLE" id="rbdLLAbL9inEE38FyEtr">ema_10</field>
                     <statement name="STATEMENT">
-                      <block type="input_list" id="ema10_in" deletable="false" movable="false">
+                      <block type="input_list" id="ema10_in_blk" deletable="false" movable="false">
                         <value name="INPUT_LIST">
-                          <block type="ticks" id="ema10_ticks_id"></block>
+                          <block type="ticks" id="ema10_t_obj"></block>
                         </value>
                         <next>
-                          <block type="period" id="ema10_per_id" deletable="false" movable="false">
+                          <block type="period" id="ema10_p_blk" deletable="false" movable="false">
                             <value name="PERIOD">
-                              <shadow type="math_number" id="ema10_num">
+                              <shadow type="math_number" id="ema10_n_val">
                                 <field name="NUM">10</field>
                               </shadow>
                             </value>
@@ -159,32 +159,32 @@
                       </block>
                     </statement>
                     <next>
-                      <block type="macda_statement" id="macd_calc_id">
+                      <block type="macda_statement" id="macd_calc_blk">
                         <field name="VARIABLE" id="hK(XSqy+XV=Xw|9f1~O*">macd_value</field>
                         <field name="MACDFIELDS_LIST">1</field>
                         <statement name="STATEMENT">
-                          <block type="input_list" id="macd_in" deletable="false" movable="false">
+                          <block type="input_list" id="macd_in_blk" deletable="false" movable="false">
                             <value name="INPUT_LIST">
-                              <block type="ticks" id="macd_ticks_id"></block>
+                              <block type="ticks" id="macd_t_obj"></block>
                             </value>
                             <next>
-                              <block type="fast_ema_period" id="macd_f_id" deletable="false" movable="false">
+                              <block type="fast_ema_period" id="macd_f_blk" deletable="false" movable="false">
                                 <value name="FAST_EMA_PERIOD">
-                                  <shadow type="math_number" id="macd_f_num">
+                                  <shadow type="math_number" id="macd_f_val">
                                     <field name="NUM">12</field>
                                   </shadow>
                                 </value>
                                 <next>
-                                  <block type="slow_ema_period" id="macd_s_id" deletable="false" movable="false">
+                                  <block type="slow_ema_period" id="macd_s_blk" deletable="false" movable="false">
                                     <value name="SLOW_EMA_PERIOD">
-                                      <shadow type="math_number" id="macd_s_num">
+                                      <shadow type="math_number" id="macd_s_val">
                                         <field name="NUM">26</field>
                                       </shadow>
                                     </value>
                                     <next>
-                                      <block type="signal_ema_period" id="macd_sig_id" deletable="false" movable="false">
+                                      <block type="signal_ema_period" id="macd_sig_blk" deletable="false" movable="false">
                                         <value name="SIGNAL_EMA_PERIOD">
-                                          <shadow type="math_number" id="macd_sig_num">
+                                          <shadow type="math_number" id="macd_sig_val">
                                             <field name="NUM">9</field>
                                           </shadow>
                                         </value>
@@ -197,53 +197,53 @@
                           </block>
                         </statement>
                         <next>
-                          <block type="controls_if" id="logic_call_if">
+                          <block type="controls_if" id="call_log_blk">
                             <value name="IF0">
-                              <block type="logic_operation" id="and_call_1" inline="false">
+                              <block type="logic_operation" id="call_and_blk" inline="false">
                                 <field name="OP">AND</field>
                                 <value name="A">
-                                  <block type="logic_compare" id="ema_cross_call">
+                                  <block type="logic_compare" id="call_ema_blk">
                                     <field name="OP">GT</field>
                                     <value name="A">
-                                      <block type="variables_get" id="v_ema10_call">
+                                      <block type="variables_get" id="v_ema10_c">
                                         <field name="VAR" id="rbdLLAbL9inEE38FyEtr">ema_10</field>
                                       </block>
                                     </value>
                                     <value name="B">
-                                      <block type="variables_get" id="v_ema50_call">
+                                      <block type="variables_get" id="v_ema50_c">
                                         <field name="VAR" id="xA(E1HjLb:#=L,.8~o)2">ema_50</field>
                                       </block>
                                     </value>
                                   </block>
                                 </value>
                                 <value name="B">
-                                  <block type="logic_operation" id="and_call_2" inline="false">
+                                  <block type="logic_operation" id="call_and2_blk" inline="false">
                                     <field name="OP">AND</field>
                                     <value name="A">
-                                      <block type="logic_compare" id="rsi_bound_call">
+                                      <block type="logic_compare" id="call_rsi_blk">
                                         <field name="OP">LT</field>
                                         <value name="A">
-                                          <block type="variables_get" id="v_rsi_call">
+                                          <block type="variables_get" id="v_rsi_c">
                                             <field name="VAR" id="aUry~6VDtwYz]c!k}x:n">rsi</field>
                                           </block>
                                         </value>
                                         <value name="B">
-                                          <block type="math_number" id="rsi_up_val">
+                                          <block type="math_number" id="rsi_up_val_blk">
                                             <field name="NUM">70</field>
                                           </block>
                                         </value>
                                       </block>
                                     </value>
                                     <value name="B">
-                                      <block type="logic_compare" id="macd_dir_call">
+                                      <block type="logic_compare" id="call_macd_blk">
                                         <field name="OP">GT</field>
                                         <value name="A">
-                                          <block type="variables_get" id="v_macd_call">
+                                          <block type="variables_get" id="v_macd_c">
                                             <field name="VAR" id="hK(XSqy+XV=Xw|9f1~O*">macd_value</field>
                                           </block>
                                         </value>
                                         <value name="B">
-                                          <block type="math_number" id="zero_val_call">
+                                          <block type="math_number" id="zero_c_blk">
                                             <field name="NUM">0</field>
                                           </block>
                                         </value>
@@ -254,58 +254,58 @@
                               </block>
                             </value>
                             <statement name="DO0">
-                              <block type="purchase" id="do_pur_call">
+                              <block type="purchase" id="pur_call_blk">
                                 <field name="PURCHASE_LIST">CALL</field>
                               </block>
                             </statement>
                             <next>
-                              <block type="controls_if" id="logic_put_if">
+                              <block type="controls_if" id="put_log_blk">
                                 <value name="IF0">
-                                  <block type="logic_operation" id="and_put_1" inline="false">
+                                  <block type="logic_operation" id="put_and_blk" inline="false">
                                     <field name="OP">AND</field>
                                     <value name="A">
-                                      <block type="logic_compare" id="ema_cross_put">
+                                      <block type="logic_compare" id="put_ema_blk">
                                         <field name="OP">LT</field>
                                         <value name="A">
-                                          <block type="variables_get" id="v_ema10_put">
+                                          <block type="variables_get" id="v_ema10_p">
                                             <field name="VAR" id="rbdLLAbL9inEE38FyEtr">ema_10</field>
                                           </block>
                                         </value>
                                         <value name="B">
-                                          <block type="variables_get" id="v_ema50_put">
+                                          <block type="variables_get" id="v_ema50_p">
                                             <field name="VAR" id="xA(E1HjLb:#=L,.8~o)2">ema_50</field>
                                           </block>
                                         </value>
                                       </block>
                                     </value>
                                     <value name="B">
-                                      <block type="logic_operation" id="and_put_2" inline="false">
+                                      <block type="logic_operation" id="put_and2_blk" inline="false">
                                         <field name="OP">AND</field>
                                         <value name="A">
-                                          <block type="logic_compare" id="rsi_bound_put">
+                                          <block type="logic_compare" id="put_rsi_blk">
                                             <field name="OP">GT</field>
                                             <value name="A">
-                                              <block type="variables_get" id="v_rsi_put">
+                                              <block type="variables_get" id="v_rsi_p">
                                                 <field name="VAR" id="aUry~6VDtwYz]c!k}x:n">rsi</field>
                                               </block>
                                             </value>
                                             <value name="B">
-                                              <block type="math_number" id="rsi_low_val">
+                                              <block type="math_number" id="rsi_low_val_blk">
                                                 <field name="NUM">30</field>
                                               </block>
                                             </value>
                                           </block>
                                         </value>
                                         <value name="B">
-                                          <block type="logic_compare" id="macd_dir_put">
+                                          <block type="logic_compare" id="put_macd_blk">
                                             <field name="OP">LT</field>
                                             <value name="A">
-                                              <block type="variables_get" id="v_macd_put">
+                                              <block type="variables_get" id="v_macd_p">
                                                 <field name="VAR" id="hK(XSqy+XV=Xw|9f1~O*">macd_value</field>
                                               </block>
                                             </value>
                                             <value name="B">
-                                              <block type="math_number" id="zero_val_put">
+                                              <block type="math_number" id="zero_p_blk">
                                                 <field name="NUM">0</field>
                                               </block>
                                             </value>
@@ -316,7 +316,7 @@
                                   </block>
                                 </value>
                                 <statement name="DO0">
-                                  <block type="purchase" id="do_pur_put">
+                                  <block type="purchase" id="pur_put_blk">
                                     <field name="PURCHASE_LIST">PUT</field>
                                   </block>
                                 </statement>
@@ -336,7 +336,13 @@
     </statement>
   </block>
   <block type="during_purchase" id="LUAfCC]s=W[up5d#d?R=" x="0" y="2000">
-    <statement name="DURING_PURCHASE_STACK"></statement>
+    <statement name="DURING_PURCHASE_STACK">
+      <block type="controls_if" id="check_s_blk">
+        <value name="IF0">
+          <block type="check_sell" id="do_check_s"></block>
+        </value>
+      </block>
+    </statement>
   </block>
   <block type="after_purchase" id="i34~b30_l-YM*|+cTCZB" x="0" y="2200">
     <statement name="AFTERPURCHASE_STACK">
