@@ -85,18 +85,40 @@
     <statement name="BEFOREPURCHASE_STACK">
       <block type="controls_if" id="guard_50">
         <value name="IF0">
-          <block type="logic_compare" id="len_chk">
-            <field name="OP">GTE</field>
+          <block type="logic_operation" id="dual_guard" inline="false">
+            <field name="OP">AND</field>
             <value name="A">
-              <block type="lists_length" id="get_len">
-                <value name="VALUE">
-                  <block type="ticks" id="get_t"></block>
+              <block type="logic_compare" id="len_chk_candles">
+                <field name="OP">GTE</field>
+                <value name="A">
+                  <block type="lists_length" id="get_len_candles">
+                    <value name="VALUE">
+                      <block type="candles" id="get_c"></block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="val_50">
+                    <field name="NUM">50</field>
+                  </block>
                 </value>
               </block>
             </value>
             <value name="B">
-              <block type="math_number" id="val_50">
-                <field name="NUM">50</field>
+              <block type="logic_compare" id="len_chk_ticks">
+                <field name="OP">GTE</field>
+                <value name="A">
+                  <block type="lists_length" id="get_len_ticks">
+                    <value name="VALUE">
+                      <block type="ticks" id="get_t"></block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="val_5">
+                    <field name="NUM">5</field>
+                  </block>
+                </value>
               </block>
             </value>
           </block>
@@ -107,7 +129,7 @@
             <statement name="STATEMENT">
               <block type="input_list" id="rsi_in" deletable="false" movable="false">
                 <value name="INPUT_LIST">
-                  <block type="ticks" id="rsi_ticks"></block>
+                  <block type="candles" id="rsi_candles"></block>
                 </value>
                 <next>
                   <block type="period" id="rsi_per" deletable="false" movable="false">
@@ -126,7 +148,7 @@
                 <statement name="STATEMENT">
                   <block type="input_list" id="ema50_in" deletable="false" movable="false">
                     <value name="INPUT_LIST">
-                      <block type="ticks" id="ema50_ticks"></block>
+                      <block type="candles" id="ema50_candles"></block>
                     </value>
                     <next>
                       <block type="period" id="ema50_per" deletable="false" movable="false">
@@ -145,7 +167,7 @@
                     <statement name="STATEMENT">
                       <block type="input_list" id="ema10_in" deletable="false" movable="false">
                         <value name="INPUT_LIST">
-                          <block type="ticks" id="ema10_ticks"></block>
+                          <block type="candles" id="ema10_candles"></block>
                         </value>
                         <next>
                           <block type="period" id="ema10_per" deletable="false" movable="false">
@@ -165,7 +187,7 @@
                         <statement name="STATEMENT">
                           <block type="input_list" id="macd_in" deletable="false" movable="false">
                             <value name="INPUT_LIST">
-                              <block type="ticks" id="macd_ticks"></block>
+                              <block type="candles" id="macd_candles"></block>
                             </value>
                             <next>
                               <block type="fast_ema_period" id="macd_f" deletable="false" movable="false">
