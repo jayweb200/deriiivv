@@ -25,7 +25,7 @@
                 <field name="TYPE_LIST">both</field>
                 <next>
                   <block type="trade_definition_candleinterval" id="O~dL+E#%q@r19PWU,GHr" deletable="false" movable="false">
-                    <field name="CANDLEINTERVAL_LIST">60</field>
+                    <field name="CANDLEINTERVAL_LIST">1</field>
                     <next>
                       <block type="trade_definition_restartbuysell" id="lI!}Fl}4aa5VoP}CIdo3" deletable="false" movable="false">
                         <field name="TIME_MACHINE_ENABLED">FALSE</field>
